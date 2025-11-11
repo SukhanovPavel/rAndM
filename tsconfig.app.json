@@ -29,6 +29,7 @@
     "paths": {
       "@/*": ["./src/*"],
       "@shared": ["./src/shared"],
+      "@components": ["./src/shared/components"],
       "@widgets": ["./src/widgets"],
       "@pages": ["./src/pages"],
       "@assets": ["./src/assets"],
@@ -37,5 +38,9 @@
       "@stores": ["./src/stores"]
     }
   },
-  "include": ["src"]
+  "include": [
+    "src",
+    "src/**/*",
+    "src/types/**/*"
+  ]
 }

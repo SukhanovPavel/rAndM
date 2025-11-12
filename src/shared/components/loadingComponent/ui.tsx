@@ -1,5 +1,5 @@
-import LoadingIconL from '@assets/LoadingImageL.svg';
-import LoadingIconS from '@assets/LoadingImageS.svg';
+import LoadingIconL from '@assets/LoadingImageL.svg?react';
+import LoadingIconS from '@assets/LoadingImageS.svg?react';
 
 import styles from './ui.module.css';
 
@@ -11,7 +11,7 @@ type Props = {
 export const LoadingComponent = ({ size, text }: Props) => {
   return (
     <>
-      <div className={styles._}>
+      <div className={styles.loader}>
         {size === 'MEDIUM' && <LoadingIconL />}
         {size === 'SMALL' && <LoadingIconS />}
       </div>

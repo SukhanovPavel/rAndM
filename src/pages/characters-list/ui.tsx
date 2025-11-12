@@ -1,4 +1,4 @@
-import TopImage from '@assets/topImage.svg';
+import TopImage from '@assets/topImage.svg?react';
 import { LoadingComponent } from '@components';
 
 export const CharactersList = () => {
@@ -6,10 +6,10 @@ export const CharactersList = () => {
     <div>
       <TopImage />
       <LoadingComponent
-        size={'MEDIUM'}
-        text={'Loading characters...'}
+        size='MEDIUM'
+        text='Loading characters...'
       />
-      <LoadingComponent size={'SMALL'} />
+      <LoadingComponent size='SMALL' />
     </div>
   );
 };

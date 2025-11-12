@@ -1,8 +1,8 @@
-import './App.css';
 import { CharacterInfo, CharactersList } from '@pages';
 import { createBrowserRouter } from 'react-router';
 
-// @ts-ignore
+import './App.css';
+
 export const router = createBrowserRouter([
   {
     path: '/',

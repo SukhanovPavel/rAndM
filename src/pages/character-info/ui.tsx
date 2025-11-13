@@ -1,6 +1,6 @@
 import { Link } from 'react-router';
 import { LoadingComponent } from '@components';
-import ArrowBack from '@assets/arrow_back_24px.svg?react';
+import { ArrowBack } from '@/assets';
 
 import styles from './ui.module.css';
 
@@ -16,7 +16,7 @@ export const CharacterInfo = () => {
         GO BACK
       </Link>
       <LoadingComponent
-        size='MEDIUM'
+        size='medium'
         text='Loading character card...'
       />
     </div>

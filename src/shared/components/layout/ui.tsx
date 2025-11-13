@@ -1,5 +1,4 @@
-import { Header } from './header/ui';
-import { Footer } from './footer/ui';
+import { Footer, Header } from '@components';
 
 import styles from './ui.module.css';
 

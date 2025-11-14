@@ -22,7 +22,22 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+
+    /* Paths */
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@shared": ["./src/shared"],
+      "@components": ["./src/shared/components"],
+      "@widgets": ["./src/widgets"],
+      "@pages": ["./src/pages"],
+      "@assets": ["./src/assets"],
+      "@api": ["./src/api"],
+      "@hooks": ["./src/hooks"],
+      "@stores": ["./src/stores"]
+    }
   },
+  "exclude": ["node_modules"],
   "include": ["src"]
 }

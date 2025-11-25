@@ -1,5 +1,5 @@
 import { Status } from '@components';
 
-export const StatusOption = ({ value }: { value: string }) => {
-  return <Status status={value as 'Alive' | 'Dead' | 'Unknown'} />;
+export const StatusOption = ({ label }: { label?: string }) => {
+  return <Status status={label as 'Alive' | 'Dead' | 'Unknown'} />;
 };

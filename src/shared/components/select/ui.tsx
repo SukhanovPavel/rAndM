@@ -1,13 +1,13 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import selectStyles from './ui.module.css';
 
 export interface SelectOptionContentProps {
-  value: string;
+  label?: string;
 }
 
 export const DefaultSelectOptionContent = (props: SelectOptionContentProps) => {
-  return <>{props.value}</>;
+  return <>{props.label}</>;
 };
 
 export interface Option {
@@ -37,6 +37,9 @@ export const CustomSelect = ({
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
+  const selectedOption =
+    options.find((opt) => opt.value === value) || undefined;
+
   useEffect(() => {
     const close = (e: MouseEvent) => {
       if (
@@ -52,24 +55,20 @@ export const CustomSelect = ({
 
   const toggleOpen = () => setIsOpen((p) => !p);
 
-  const handleClick = () => setIsOpen(false);
-
-  const optionsList = useMemo(() => {
-    return options.map((option) => {
-      return (
-        <div
-          key={option.value}
-          className={`${selectStyles.select__option} ${selectStyles[size]}`}
-          onClick={() => {
-            onChange(option.label);
-            setIsOpen(false);
-          }}
-        >
-          <SelectOptionContentComponent value={option.label} />
-        </div>
-      );
-    });
-  }, [options, onChange, SelectOptionContentComponent, size]);
+  const optionsList = options.map((option) => {
+    return (
+      <div
+        key={option.value}
+        className={`${selectStyles.select__option} ${selectStyles[size]}`}
+        onClick={() => {
+          onChange(option.value);
+          setIsOpen(false);
+        }}
+      >
+        <SelectOptionContentComponent label={option.label} />
+      </div>
+    );
+  });
 
   return (
     <div
@@ -82,7 +81,7 @@ export const CustomSelect = ({
       >
         <div className={selectStyles.select__headerWrapper}>
           {value ? (
-            <SelectOptionContentComponent value={value} />
+            <SelectOptionContentComponent label={selectedOption?.label} />
           ) : (
             <span className={selectStyles.select__placeholder}>
               {placeholder}
@@ -97,12 +96,7 @@ export const CustomSelect = ({
       </div>
 
       {isOpen && (
-        <div
-          onClick={handleClick}
-          className={selectStyles.select__dropdown}
-        >
-          {optionsList}
-        </div>
+        <div className={selectStyles.select__dropdown}>{optionsList}</div>
       )}
     </div>
   );

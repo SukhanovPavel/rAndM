@@ -2,11 +2,12 @@ import { useState } from 'react';
 import { Link } from 'react-router';
 import { ArrowBack } from '@assets';
 import { CustomSelect, LoadingComponent, StatusOption } from '@components';
+import { STATUS_OPTIONS } from '@constants';
 
 import styles from './ui.module.css';
 
 export const CharacterInfo = () => {
-  const [value, setValue] = useState<string>('Alive');
+  const [value, setValue] = useState<string>('alive');
 
   return (
     <div className={styles.character}>
@@ -19,11 +20,7 @@ export const CharacterInfo = () => {
         GO BACK
       </Link>
       <CustomSelect
-        options={[
-          { label: 'Alive', value: 'alive' },
-          { label: 'Dead', value: 'dead' },
-          { label: 'Unknown', value: 'unknown' }
-        ]}
+        options={STATUS_OPTIONS}
         onChange={setValue}
         value={value}
         size='sm'

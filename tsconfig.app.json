@@ -30,6 +30,7 @@
       "@/*": ["./src/*"],
       "@shared": ["./src/shared"],
       "@components": ["./src/shared/components"],
+      "@constants": ["./src/shared/constants"],
       "@widgets": ["./src/widgets"],
       "@pages": ["./src/pages"],
       "@assets": ["./src/assets"],

@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo,useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 
 import selectStyles from './ui.module.css';
 
@@ -56,12 +56,10 @@ export const CustomSelect = ({
 
   const optionsList = useMemo(() => {
     return options.map((option) => {
-      if (option.label === value) return null;
-
       return (
         <div
           key={option.value}
-          className={selectStyles.select__option}
+          className={`${selectStyles.select__option} ${selectStyles[size]}`}
           onClick={() => {
             onChange(option.label);
             setIsOpen(false);
@@ -71,7 +69,7 @@ export const CustomSelect = ({
         </div>
       );
     });
-  }, [options, value, onChange, SelectOptionContentComponent]);
+  }, [options, onChange, SelectOptionContentComponent, size]);
 
   return (
     <div

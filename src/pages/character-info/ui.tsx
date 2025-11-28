@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router';
 import { ArrowBack } from '@assets';
-import { CustomSelect, LoadingComponent, StatusOption } from '@components';
+import { LoadingComponent, Select, Status } from '@components';
 import { STATUS_OPTIONS } from '@constants';
 
 import styles from './ui.module.css';
@@ -19,12 +19,12 @@ export const CharacterInfo = () => {
         <ArrowBack />
         GO BACK
       </Link>
-      <CustomSelect
+      <Select
         options={STATUS_OPTIONS}
         onChange={setValue}
         value={value}
-        size='sm'
-        SelectOptionContentComponent={StatusOption}
+        size='small'
+        SelectOptionContentComponent={Status}
       />
       <LoadingComponent
         size='medium'

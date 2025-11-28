@@ -3,42 +3,42 @@ import React, { useEffect, useRef, useState } from 'react';
 import selectStyles from './ui.module.css';
 
 export interface SelectOptionContentProps {
-  label?: string;
+  label: string;
 }
 
 export const DefaultSelectOptionContent = (props: SelectOptionContentProps) => {
   return <>{props.label}</>;
 };
 
-export interface Option {
-  value: string;
+export interface Option<T> {
+  value: T;
   label: string;
 }
 
-interface SelectProps {
-  options: Option[];
-  value: string | null;
+interface SelectProps<T> {
+  options: Option<T>[];
+  value: T;
   onChange: (value: string) => void;
   placeholder?: string;
-  size?: 'sm' | 'lg';
+  size?: 'small' | 'large';
   className?: string;
   SelectOptionContentComponent?: React.FC<SelectOptionContentProps>;
 }
 
-export const CustomSelect = ({
+export const Select = ({
   options,
   value,
   onChange,
   placeholder = '',
-  size = 'lg',
+  size = 'large',
   className = '',
   SelectOptionContentComponent = DefaultSelectOptionContent
-}: SelectProps) => {
+}: SelectProps<string>) => {
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const selectedOption =
-    options.find((opt) => opt.value === value) || undefined;
+    options.find((opt: Option<string>) => opt.value === value) || undefined;
 
   useEffect(() => {
     const close = (e: MouseEvent) => {
@@ -55,7 +55,7 @@ export const CustomSelect = ({
 
   const toggleOpen = () => setIsOpen((p) => !p);
 
-  const optionsList = options.map((option) => {
+  const optionsList = options.map((option: Option<string>) => {
     return (
       <div
         key={option.value}
@@ -80,8 +80,8 @@ export const CustomSelect = ({
         onClick={toggleOpen}
       >
         <div className={selectStyles.select__headerWrapper}>
-          {value ? (
-            <SelectOptionContentComponent label={selectedOption?.label} />
+          {value && selectedOption ? (
+            <SelectOptionContentComponent label={selectedOption.label} />
           ) : (
             <span className={selectStyles.select__placeholder}>
               {placeholder}

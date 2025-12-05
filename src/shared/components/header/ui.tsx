@@ -1,4 +1,4 @@
-import { LogoBlack } from '@/assets';
+import { LogoBlack } from '@assets';
 
 import styles from './ui.module.css';
 

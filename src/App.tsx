@@ -1,5 +1,5 @@
-import { CharacterInfo, CharactersList } from '@pages';
 import { createBrowserRouter } from 'react-router';
+import { CharacterInfo, CharactersList } from '@pages';
 
 import './App.css';
 

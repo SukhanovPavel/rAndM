@@ -5,6 +5,7 @@ import DeadIcon from '@assets/ellipseRed.svg?react';
 import LoadingIconL from '@assets/LoadingImageL.svg?react';
 import LoadingIconS from '@assets/LoadingImageS.svg?react';
 import LogoBlack from '@assets/logo-black1.svg?react';
+import SearchIcon from '@assets/searchIcon.svg?react';
 import TopImage from '@assets/topImage.svg?react';
 
 export {
@@ -14,6 +15,7 @@ export {
   LoadingIconL,
   LoadingIconS,
   LogoBlack,
+  SearchIcon,
   TopImage,
   UnknownIcon
 };

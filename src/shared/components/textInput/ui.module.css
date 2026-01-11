@@ -1,0 +1,52 @@
+.textInput {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    background: #fff;
+    color: #111;
+}
+
+.textInput_bordered {
+    border: 1px solid grey;
+    border-radius: 8px;
+    padding: 16px;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.textInput_underlined {
+    border-bottom: 1px solid #000000;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.textInput_disabled {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.iconLeft {
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+}
+
+.input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    font: inherit;
+    background: transparent;
+}
+
+.clearButton {
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    line-height: 1;
+}

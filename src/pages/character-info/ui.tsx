@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { Link } from 'react-router';
-import { ArrowBack } from '@assets';
-import { LoadingComponent, Select, Status } from '@components';
-import { STATUS_OPTIONS } from '@constants';
+import { ArrowBack, SearchIcon } from '@assets';
+import { TextInput } from '@components';
 
 import styles from './ui.module.css';
 
 export const CharacterInfo = () => {
-  const [value, setValue] = useState<string>('alive');
+  const [testValue, setTestValue] = useState<string>('Rick Sanchez');
+  const [testValue2, setTestValue2] = useState<string>('Some character');
 
   return (
     <div className={styles.character}>
@@ -19,17 +19,28 @@ export const CharacterInfo = () => {
         <ArrowBack />
         GO BACK
       </Link>
-      <Select
-        options={STATUS_OPTIONS}
-        onChange={setValue}
-        value={value}
-        size='small'
-        SelectOptionContentComponent={Status}
-      />
-      <LoadingComponent
-        size='medium'
-        text='Loading character card...'
-      />
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '2rem',
+          width: '250px',
+          marginLeft: '40%'
+        }}
+      >
+        <TextInput
+          mode='underlined'
+          value={testValue}
+          onChange={setTestValue}
+        />
+        <TextInput
+          mode='bordered'
+          value={testValue2}
+          onChange={setTestValue2}
+          iconLeft={<SearchIcon />}
+          placeholder='Filter by name...'
+        />
+      </div>
     </div>
   );
 };

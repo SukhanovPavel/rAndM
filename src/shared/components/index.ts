@@ -4,3 +4,4 @@ export * from './layout/ui';
 export * from './loadingComponent/ui';
 export * from './select/ui';
 export * from './status/ui';
+export * from './textInput/ui';

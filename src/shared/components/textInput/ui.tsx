@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { cn } from '@/shared/helpers/classNames';
+import { cn } from '@/shared/helpers';
 
 import styles from './ui.module.css';
 
@@ -14,6 +14,7 @@ interface TextInputProps {
   iconLeft?: React.ReactNode;
   className?: string;
   disabled?: boolean;
+  size?: 'small' | 'large';
 }
 
 export const TextInput: React.FC<TextInputProps> = ({
@@ -24,6 +25,7 @@ export const TextInput: React.FC<TextInputProps> = ({
   iconLeft,
   className,
   disabled,
+  size = 'large',
   ...props
 }) => {
   const showClear = Boolean(value && !disabled);
@@ -36,7 +38,8 @@ export const TextInput: React.FC<TextInputProps> = ({
           [styles.textInput_bordered]: mode === 'bordered',
           [styles.textInput_underlined]: mode === 'underlined',
           [styles.textInput_disabled]: disabled,
-          [styles.textInput_withIcon]: Boolean(iconLeft)
+          [styles.textInput_withIcon]: Boolean(iconLeft),
+          [styles.textInput_small]: size === 'small'
         },
         [className]
       )}

@@ -1,15 +1,15 @@
 import { AliveIcon, DeadIcon, UnknownIcon } from '@assets';
+import type { TStatus } from '@shared';
 
 import statusStyles from './ui.module.css';
 
-export const Status = ({
-  status,
-  label
-}: {
-  status?: 'Alive' | 'Dead' | 'Unknown';
+interface StatusProps {
+  status?: TStatus;
   label?: string;
-}) => {
-  const currentStatus = (label as 'Alive' | 'Dead' | 'Unknown') || status;
+}
+
+export const Status = ({ status, label }: StatusProps) => {
+  const currentStatus = (label as TStatus) || status;
 
   if (!currentStatus) {
     return null;

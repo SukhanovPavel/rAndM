@@ -18,14 +18,14 @@ export interface Option<T> {
 interface SelectProps<T> {
   options: Option<T>[];
   value: T;
-  onChange: (value: string) => void;
+  onChange: (value: T) => void;
   placeholder?: string;
   size?: 'small' | 'large';
   className?: string;
   SelectOptionContentComponent?: React.FC<SelectOptionContentProps>;
 }
 
-export const Select = ({
+export const Select = <T extends string>({
   options,
   value,
   onChange,
@@ -33,12 +33,11 @@ export const Select = ({
   size = 'large',
   className = '',
   SelectOptionContentComponent = DefaultSelectOptionContent
-}: SelectProps<string>) => {
+}: SelectProps<T>) => {
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const selectedOption =
-    options.find((opt: Option<string>) => opt.value === value) || undefined;
+  const selectedOption = options.find((opt) => opt.value === value);
 
   useEffect(() => {
     const close = (e: MouseEvent) => {
@@ -55,7 +54,7 @@ export const Select = ({
 
   const toggleOpen = () => setIsOpen((p) => !p);
 
-  const optionsList = options.map((option: Option<string>) => {
+  const optionsList = options.map((option) => {
     return (
       <div
         key={option.value}

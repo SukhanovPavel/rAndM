@@ -1,0 +1,59 @@
+.personWidget {
+    position: relative;
+    width: 508px;
+    height: 248px;
+    border-radius: 6px;
+    border: 1px solid whitesmoke;
+    display: flex;
+    gap: 13px;
+    padding: 7px 14px 7px 7px;
+}
+
+.personWidget__controls {
+    display: none;
+}
+
+.personWidget:hover .personWidget__controls {
+    display: block;
+    position: absolute;
+    top: 9px;
+    right: 9px;
+}
+
+.personWidget__controls * {
+    cursor: pointer;
+}
+
+.personWidget__image {
+    width: 240px;
+}
+
+.personWidget__description {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    max-width: 150px;
+    height: 100%;
+    margin: 0;
+}
+
+.personWidget__description a {
+    font-weight: 500;
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+.personWidget__description dt {
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.personWidget__description dd {
+    font-weight: 400;
+    font-size: 14px;
+    margin: 0;
+    color: #0009;
+}

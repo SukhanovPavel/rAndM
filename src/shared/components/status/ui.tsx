@@ -1,29 +1,32 @@
 import { AliveIcon, DeadIcon, UnknownIcon } from '@assets';
+import type { TStatus } from '@shared';
 
 import statusStyles from './ui.module.css';
 
-export const Status = ({
-  status,
-  label
-}: {
-  status?: 'Alive' | 'Dead' | 'Unknown';
+interface StatusProps {
+  status?: TStatus;
   label?: string;
-}) => {
-  const currentStatus = (label as 'Alive' | 'Dead' | 'Unknown') || status;
+}
+
+export const Status = ({ status, label }: StatusProps) => {
+  const currentStatus = (label?.toLowerCase() as TStatus) || status;
 
   if (!currentStatus) {
     return null;
   }
 
   const icons = {
-    Alive: <AliveIcon />,
-    Dead: <DeadIcon />,
-    Unknown: <UnknownIcon />
+    alive: <AliveIcon />,
+    dead: <DeadIcon />,
+    unknown: <UnknownIcon />
   };
+
+  const displayStatus =
+    currentStatus.charAt(0).toUpperCase() + currentStatus.slice(1);
 
   return (
     <div className={statusStyles.status}>
-      <span>{currentStatus}</span>
+      <span>{displayStatus}</span>
       {icons[currentStatus]}
     </div>
   );

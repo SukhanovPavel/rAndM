@@ -9,21 +9,24 @@ interface StatusProps {
 }
 
 export const Status = ({ status, label }: StatusProps) => {
-  const currentStatus = (label as TStatus) || status;
+  const currentStatus = (label?.toLowerCase() as TStatus) || status;
 
   if (!currentStatus) {
     return null;
   }
 
   const icons = {
-    Alive: <AliveIcon />,
-    Dead: <DeadIcon />,
-    Unknown: <UnknownIcon />
+    alive: <AliveIcon />,
+    dead: <DeadIcon />,
+    unknown: <UnknownIcon />
   };
+
+  const displayStatus =
+    currentStatus.charAt(0).toUpperCase() + currentStatus.slice(1);
 
   return (
     <div className={statusStyles.status}>
-      <span>{currentStatus}</span>
+      <span>{displayStatus}</span>
       {icons[currentStatus]}
     </div>
   );

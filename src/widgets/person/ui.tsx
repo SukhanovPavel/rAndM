@@ -3,46 +3,58 @@ import { Link } from 'react-router';
 import { CloseIcon, ConfirmIcon, EditIcon } from '@assets';
 import { Select, Status, TextInput } from '@components';
 import { STATUS_OPTIONS } from '@constants';
-import type { TStatus } from '@shared';
+import { useCharacterForm } from '@hooks';
+import type { ICharacter, TStatus } from '@shared';
 
 import styles from './ui.module.css';
 
-export type Props = {
-  id: number;
-  name: string;
-  gender: string;
-  species: string;
-  location: string;
-  status: 'Alive' | 'Dead' | 'Unknown';
-  image: string;
-  handleNameChange: (name: string) => void;
-  handleLocationChange: (location: string) => void;
-  handleStatusChange: (status: TStatus) => void;
+export type Props = ICharacter & {
+  onNameChange: (name: string) => void;
+  onLocationChange: (location: string) => void;
+  onStatusChange: (status: TStatus) => void;
 };
 
 export const Person = ({
   id,
-  name,
+  name: initialName,
   gender,
   species,
-  location,
-  status,
+  location: initialLocation,
+  status: initialStatus,
   image,
-  handleNameChange,
-  handleLocationChange,
-  handleStatusChange
+  onNameChange,
+  onLocationChange,
+  onStatusChange
 }: Props) => {
   const [isEdit, setIsEdit] = useState<boolean>(false);
+
+  const {
+    name,
+    location,
+    status,
+    handleNameChange,
+    handleLocationChange,
+    handleStatusChange,
+    resetForm
+  } = useCharacterForm({
+    initialName,
+    initialLocation,
+    initialStatus
+  });
 
   const handleEdit = () => {
     setIsEdit(true);
   };
 
   const handleConfirm = () => {
+    if (name !== initialName) onNameChange(name);
+    if (location !== initialLocation) onLocationChange(location);
+    if (status !== initialStatus) onStatusChange(status);
     setIsEdit(false);
   };
 
   const handleCancel = () => {
+    resetForm();
     setIsEdit(false);
   };
 

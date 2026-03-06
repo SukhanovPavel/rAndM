@@ -1,40 +1,40 @@
 import { useState } from 'react';
 import { TopImage } from '@assets';
 import { LoadingComponent } from '@components';
-import type { TStatus } from '@shared';
+import type { ICharacter, TStatus } from '@shared';
 import { Person } from '@widgets';
 
 export const CharactersList = () => {
-  const [personName, setPersonName] = useState<string>('Rick Sanchez');
-  const [personLocation, setPersonLocation] = useState<string>('Earth');
-  const [personStatus, setPersonStatus] = useState<TStatus>('Alive');
+  const [character, setCharacter] = useState<ICharacter>({
+    id: 1,
+    name: 'Rick Sanchez',
+    location: 'Earth',
+    status: 'alive',
+    gender: 'Male',
+    species: 'Human',
+    image: 'src/assets/forWidget.png'
+  });
 
-  const handleNameChange = (value: string) => {
-    setPersonName(value);
+  const handleNameChange = (newName: string) => {
+    setCharacter((prev) => ({ ...prev, name: newName }));
   };
 
-  const handleLocationChange = (value: string) => {
-    setPersonLocation(value);
+  const handleLocationChange = (newLocation: string) => {
+    setCharacter((prev) => ({ ...prev, location: newLocation }));
   };
 
-  const handleStatusChange = (value: TStatus) => {
-    setPersonStatus(value);
+  const handleStatusChange = (newStatus: TStatus) => {
+    setCharacter((prev) => ({ ...prev, status: newStatus }));
   };
 
   return (
     <div>
       <TopImage />
       <Person
-        name={personName}
-        id={1}
-        image='src/assets/forWidget.png'
-        gender='Male'
-        status={personStatus}
-        location={personLocation}
-        species='Human'
-        handleNameChange={handleNameChange}
-        handleLocationChange={handleLocationChange}
-        handleStatusChange={handleStatusChange}
+        {...character}
+        onNameChange={handleNameChange}
+        onLocationChange={handleLocationChange}
+        onStatusChange={handleStatusChange}
       />
       <LoadingComponent size='small' />
     </div>
